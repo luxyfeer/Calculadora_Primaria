@@ -37,12 +37,19 @@ def resolver_ecuacion_lineal(a, b):
         x = -b / a
         return "El resultado de la ecuación {}x + {} = 0 es x = {}".format(a, b, x)
 
-# Promedio dos números 
 def calcular_promedio_dos_numeros(a, b):
     return (a + b) / 2
-# Promedio tres números
+
 def calcular_promedio_tres_numeros(a, b, c):
     return (a + b + c) / 3
+
+def encontrar_maximo(a, b):
+    return max(a, b)
+
+def sumar_fracciones(a, b, c, d):
+    numerador = (a * d) + (b * c)
+    denominador = b * d
+    return numerador, denominador
 
 # Función principal de la calculadora
 def calculadora():
@@ -62,9 +69,11 @@ def calculadora():
         print("10. Resolver ecuación lineal de primer grado")
         print("11. Calcular promedio de dos números")
         print("12. Calcular promedio de tres números")
-        print("13. Salir")
+        print("13. Encontrar máximo de dos números")
+        print("14. Sumar fracciones homogéneas")
+        print("15. Salir")
 
-        opcion = input("Seleccione una opción (1-13): ")
+        opcion = input("Seleccione una opción (1-15): ")
 
         if opcion == "1":
             a = float(input("Ingrese el primer número: "))
@@ -111,6 +120,17 @@ def calculadora():
             c = float(input("Ingrese el tercer número: "))
             print("El promedio de los tres números es:", calcular_promedio_tres_numeros(a, b, c))
         elif opcion == "13":
+            a = float(input("Ingrese el primer número: "))
+            b = float(input("Ingrese el segundo número: "))
+            print("El máximo de los dos números es:", encontrar_maximo(a, b))
+        elif opcion == "14":
+            a = float(input("Ingrese el numerador de la primera fracción: "))
+            b = float(input("Ingrese el denominador de la primera fracción: "))
+            c = float(input("Ingrese el numerador de la segunda fracción: "))
+            d = float(input("Ingrese el denominador de la segunda fracción: "))
+            resultado_numerador, resultado_denominador = sumar_fracciones(a, b, c, d)
+            print("El resultado de la suma de las fracciones es: {}/{}".format(resultado_numerador, resultado_denominador))
+        elif opcion == "15":
             print("¡Hasta luego!")
             break
         else:
