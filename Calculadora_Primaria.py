@@ -46,6 +46,11 @@ def calcular_promedio_tres_numeros(a, b, c):
 def encontrar_maximo(a, b):
     return max(a, b)
 
+def sumar_fracciones(a, b, c, d):
+    numerador = (a * d) + (b * c)
+    denominador = b * d
+    return numerador, denominador
+
 # Función principal de la calculadora
 def calculadora():
     print("¡Bienvenido a la calculadora científica multifuncional!")
@@ -65,9 +70,10 @@ def calculadora():
         print("11. Calcular promedio de dos números")
         print("12. Calcular promedio de tres números")
         print("13. Encontrar máximo de dos números")
-        print("14. Salir")
+        print("14. Sumar fracciones homogéneas")
+        print("15. Salir")
 
-        opcion = input("Seleccione una opción (1-14): ")
+        opcion = input("Seleccione una opción (1-15): ")
 
         if opcion == "1":
             a = float(input("Ingrese el primer número: "))
@@ -118,6 +124,13 @@ def calculadora():
             b = float(input("Ingrese el segundo número: "))
             print("El máximo de los dos números es:", encontrar_maximo(a, b))
         elif opcion == "14":
+            a = float(input("Ingrese el numerador de la primera fracción: "))
+            b = float(input("Ingrese el denominador de la primera fracción: "))
+            c = float(input("Ingrese el numerador de la segunda fracción: "))
+            d = float(input("Ingrese el denominador de la segunda fracción: "))
+            resultado_numerador, resultado_denominador = sumar_fracciones(a, b, c, d)
+            print("El resultado de la suma de las fracciones es: {}/{}".format(resultado_numerador, resultado_denominador))
+        elif opcion == "15":
             print("¡Hasta luego!")
             break
         else:
