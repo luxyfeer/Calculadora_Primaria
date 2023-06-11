@@ -1,153 +1,87 @@
 import math
 
-def suma(a, b):
-    return a + b
+class Calculadora:
+    def __init__(self):
+        self.opciones = {
+            "1": self.sumar,
+            "2": self.restar,
+            "3": self.multiplicar,
+            "4": self.dividir,
+            "5": self.calcular_promedio,
+            "6": self.sumar_fracciones,
+            "7": self.salir
+        }
 
-def resta(a, b):
-    return a - b
+    def sumar(self):
+        num1 = float(input("Ingrese el primer número: "))
+        num2 = float(input("Ingrese el segundo número: "))
+        resultado = num1 + num2
+        print("Resultado:", resultado)
 
-def multiplicacion(a, b):
-    return a * b
+    def restar(self):
+        num1 = float(input("Ingrese el primer número: "))
+        num2 = float(input("Ingrese el segundo número: "))
+        resultado = num1 - num2
+        print("Resultado:", resultado)
 
-def division(a, b):
-    return a / b
+    def multiplicar(self):
+        num1 = float(input("Ingrese el primer número: "))
+        num2 = float(input("Ingrese el segundo número: "))
+        resultado = num1 * num2
+        print("Resultado:", resultado)
 
-def raiz_cuadrada(a):
-    return math.sqrt(a)
+    def dividir(self):
+        num1 = float(input("Ingrese el primer número: "))
+        num2 = float(input("Ingrese el segundo número: "))
+        resultado = num1 / num2
+        print("Resultado:", resultado)
 
-def logaritmo(a):
-    return math.log10(a)
+    def calcular_promedio(self):
+        num_numeros = int(input("Ingrese la cantidad de números: "))
+        numeros = []
+        for i in range(num_numeros):
+            numero = float(input("Ingrese el número {}: ".format(i+1)))
+            numeros.append(numero)
+        resultado = sum(numeros) / len(numeros)
+        print("Resultado:", resultado)
 
-def seno(a):
-    return math.sin(a)
+    def sumar_fracciones(self):
+        num1 = float(input("Ingrese el numerador de la primera fracción: "))
+        den1 = float(input("Ingrese el denominador de la primera fracción: "))
+        num2 = float(input("Ingrese el numerador de la segunda fracción: "))
+        den2 = float(input("Ingrese el denominador de la segunda fracción: "))
+        numerador = (num1 * den2) + (num2 * den1)
+        denominador = den1 * den2
+        resultado = (numerador, denominador)
+        print("Resultado:", resultado)
 
-def coseno(a):
-    return math.cos(a)
+    def salir(self):
+        print("¡Hasta luego!")
 
-def tangente(a):
-    return math.tan(a)
-
-def resolver_ecuacion_lineal(a, b):
-    if a == 0:
-        if b == 0:
-            return "La ecuación es indeterminada (0 = 0)"
-        else:
-            return "La ecuación es contradictoria (0 = {} no es posible)".format(b)
-    else:
-        x = -b / a
-        return "El resultado de la ecuación {}x + {} = 0 es x = {}".format(a, b, x)
-
-def calcular_promedio(a, b, c=None):
-    if c is not None:
-        return (a + b + c) / 3
-    else:
-        return (a + b) / 2
-
-def encontrar_maximo(a, b):
-    return max(a, b)
-
-def sumar_fracciones(a, b, c, d):
-    numerador = (a * d) + (b * c)
-    denominador = b * d
-    return numerador, denominador
-
-def restar_fracciones(a, b, c, d):
-    numerador = (a * d) - (b * c)
-    denominador = b * d
-    return numerador, denominador
-
-# Función principal de la calculadora
-def calculadora():
-    print("¡Bienvenido a la calculadora científica multifuncional!")
-
-    while True:
+    def mostrar_menu(self):
         print("\nOpciones disponibles:")
-        print("1. Suma")
-        print("2. Resta")
-        print("3. Multiplicación")
-        print("4. División")
-        print("5. Raíz cuadrada")
-        print("6. Logaritmo (base 10)")
-        print("7. Seno")
-        print("8. Coseno")
-        print("9. Tangente")
-        print("10. Resolver ecuación lineal de primer grado")
-        print("11. Calcular promedio de dos números")
-        print("12. Calcular promedio de tres números")
-        print("13. Encontrar máximo de dos números")
-        print("14. Sumar fracciones homogéneas")
-        print("15. Restar fracciones homogéneas")
-        print("16. Salir")
+        print("1. Sumar")
+        print("2. Restar")
+        print("3. Multiplicar")
+        print("4. Dividir")
+        print("5. Calcular promedio")
+        print("6. Sumar fracciones homogéneas")
+        print("7. Salir")
 
-        opcion = input("Seleccione una opción (1-16): ")
-
-        if opcion == "1":
-            a = float(input("Ingrese el primer número: "))
-            b = float(input("Ingrese el segundo número: "))
-            print("Resultado:", suma(a, b))
-        elif opcion == "2":
-            a = float(input("Ingrese el primer número: "))
-            b = float(input("Ingrese el segundo número: "))
-            print("Resultado:", resta(a, b))
-        elif opcion == "3":
-            a = float(input("Ingrese el primer número: "))
-            b = float(input("Ingrese el segundo número: "))
-            print("Resultado:", multiplicacion(a, b))
-        elif opcion == "4":
-            a = float(input("Ingrese el primer número: "))
-            b = float(input("Ingrese el segundo número: "))
-            print("Resultado:", division(a, b))
-        elif opcion == "5":
-            a = float(input("Ingrese el número: "))
-            print("Resultado:", raiz_cuadrada(a))
-        elif opcion == "6":
-            a = float(input("Ingrese el número: "))
-            print("Resultado:", logaritmo(a))
-        elif opcion == "7":
-            a = float(input("Ingrese el ángulo en radianes: "))
-            print("Resultado:", seno(a))
-        elif opcion == "8":
-            a = float(input("Ingrese el ángulo en radianes: "))
-            print("Resultado:", coseno(a))
-        elif opcion == "9":
-            a = float(input("Ingrese el ángulo en radianes: "))
-            print("Resultado:", tangente(a))
-        elif opcion == "10":
-            a = float(input("Ingrese el coeficiente a: "))
-            b = float(input("Ingrese el coeficiente b: "))
-            print(resolver_ecuacion_lineal(a, b))
-        elif opcion == "11":
-            a = float(input("Ingrese el primer número: "))
-            b = float(input("Ingrese el segundo número: "))
-            print("Resultado:", calcular_promedio(a, b))
-        elif opcion == "12":
-            a = float(input("Ingrese el primer número: "))
-            b = float(input("Ingrese el segundo número: "))
-            c = float(input("Ingrese el tercer número: "))
-            print("Resultado:", calcular_promedio(a, b, c))
-        elif opcion == "13":
-            a = float(input("Ingrese el primer número: "))
-            b = float(input("Ingrese el segundo número: "))
-            print("Resultado:", encontrar_maximo(a, b))
-        elif opcion == "14":
-            a = float(input("Ingrese el numerador de la primera fracción: "))
-            b = float(input("Ingrese el denominador de la primera fracción: "))
-            c = float(input("Ingrese el numerador de la segunda fracción: "))
-            d = float(input("Ingrese el denominador de la segunda fracción: "))
-            print("Resultado:", sumar_fracciones(a, b, c, d))
-        elif opcion == "15":
-            a = float(input("Ingrese el numerador de la primera fracción: "))
-            b = float(input("Ingrese el denominador de la primera fracción: "))
-            c = float(input("Ingrese el numerador de la segunda fracción: "))
-            d = float(input("Ingrese el denominador de la segunda fracción: "))
-            print("Resultado:", restar_fracciones(a, b, c, d))
-        elif opcion == "16":
-            print("¡Hasta luego!")
-            break
+    def ejecutar_opcion(self, opcion):
+        if opcion in self.opciones:
+            self.opciones[opcion]()
         else:
             print("Opción inválida. Por favor, seleccione una opción válida.")
 
+    def ejecutar_calculadora(self):
+        print("¡Bienvenido a la calculadora científica multifuncional!")
+
+        while True:
+            self.mostrar_menu()
+            opcion = input("Seleccione una opción (1-7): ")
+            self.ejecutar_opcion(opcion)
+
 # Ejecutar la calculadora
-calculadora()
-
-
+calculadora = Calculadora()
+calculadora.ejecutar_calculadora()
